@@ -13,6 +13,9 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
+  
+  background: url('../static/img/concert.png') no-repeat center center/cover;
+  background-attachment: fixed;
 }
 
 /* Header Styling */
@@ -52,19 +55,26 @@ header a:hover {
   color: #00bcd4;
 }
 
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  padding-top: 3rem;
+}
+
 /* Main Content with Background Image */
 main {
   position: relative;
   height: 100vh;
-  background: url('../static/img/concert.png') no-repeat center center/cover;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: center;
 }
 
 .main-content {
   text-align: center;
-  margin-top: -10%;
+  margin-top: 10%;
   background-color: rgba(0, 0, 0, 0.8); /* Dark overlay for text visibility */
   color: white;
   padding: 2em;
@@ -73,6 +83,7 @@ main {
 }
 
 .main-content h1 {
+  color: white;
   font-size: 3rem;
   margin-bottom: 1rem;
 }
@@ -115,33 +126,51 @@ main button:hover {
   background-color: #ae005d;
 }
 
-/* Responsive Image Support */
-main img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 1.5rem;
+#concert-list {
+  max-width: 1200px;
+  margin: 4% auto;
+  padding: 1rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  header nav {
-    flex-direction: column;
-  }
+.concert-card {
+  display: flex;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: start;
+  padding: 10px;
+  margin: 2% auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color:  rgba(0, 0, 0, 0.8);;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
 
-  header a {
-    margin: 0.5rem 0;
-  }
+.concert-card img {
+  width: 20%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 20px;
+}
 
-  .main-content h1 {
-    font-size: 2rem;
-  }
+.concert-info {
+  line-height: 4rem;
+}
 
-  .main-content p {
-    font-size: 1rem;
-  }
+.concert-info button {
+  background-color: #ff38a2;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 0.5em 1.2em;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-  .main-content button {
-    font-size: 0.9rem;
-  }
+.concert-info button:hover {
+  background-color: #ae005d;
 }
