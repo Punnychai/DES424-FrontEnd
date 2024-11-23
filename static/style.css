@@ -1,0 +1,147 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Styling */
+header {
+  background-color: #222;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+header img {
+  max-width: 100px;
+  height: auto;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+header a:hover {
+  color: #00bcd4;
+}
+
+/* Main Content with Background Image */
+main {
+  position: relative;
+  height: 100vh;
+  background: url('../static/img/concert.png') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-content {
+  text-align: center;
+  margin-top: -10%;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark overlay for text visibility */
+  color: white;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.main-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.main-content p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.main-content button {
+  background-color: #ff38a2;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 0.75em 1.5em;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.main-content button:hover {
+  background-color: #ae005d;
+}
+
+/* Button Styling */
+main button {
+  background-color: #ff38a2;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 0.75em 1.5em;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+main button:hover {
+  background-color: #ae005d;
+}
+
+/* Responsive Image Support */
+main img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header nav {
+    flex-direction: column;
+  }
+
+  header a {
+    margin: 0.5rem 0;
+  }
+
+  .main-content h1 {
+    font-size: 2rem;
+  }
+
+  .main-content p {
+    font-size: 1rem;
+  }
+
+  .main-content button {
+    font-size: 0.9rem;
+  }
+}
