@@ -1,11 +1,12 @@
-/* General Reset */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; /* General Reset */
 }
 
-/* Body Styling */
+
+html::-webkit-scrollbar {
+  display: none;    /* completely hides the scollbar */
+}
+
 body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
@@ -16,9 +17,9 @@ body {
   
   background: url('../static/img/concert.png') no-repeat center center/cover;
   background-attachment: fixed;
+  scrollbar-width: 0;
 }
 
-/* Header Styling */
 header {
   background-color: #222;
   color: white;
@@ -68,6 +69,7 @@ h1 {
 main {
   position: relative;
   height: 100vh;
+  margin-top: 100px;
   /* display: flex; */
   align-items: center;
   justify-content: center;
@@ -75,7 +77,7 @@ main {
 
 .main-content {
   text-align: center;
-  margin-top: 10%;
+  margin-top: 14%;
   background-color: rgba(0, 0, 0, 0.8); /* Dark overlay for text visibility */
   color: white;
   padding: 2em;
@@ -174,4 +176,119 @@ main button:hover {
 
 .concert-info button:hover {
   background-color: #ae005d;
+}
+
+/* LOGIN & SIGNUP */
+.login-container, .signup-container {
+  width: 400px;
+  height: 390px;
+  margin: 2% auto; /* Center horizontally with auto margin */
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #222;
+  color: white;
+  text-align: left;
+  box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.5); /* Add box shadow for depth */
+}
+
+.login-container form, .signup-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container h6, .signup-container h6 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 4px 0 10px 0;
+}
+
+.login-container p, .signup-container p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#username, #email, #password {
+  height: 40px;
+  padding: 10px;
+  margin : 10px 0;
+  border: none;
+  border-radius: 6px;
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+}
+
+#goSignUp {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.pwd-error {
+  margin-top: -60px;
+  text-align: center;
+  font-size: 24px;
+}
+
+input[type="submit"] {
+  background-color: green;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 2% 0;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+  
+input[type="submit"]:hover {
+  background-color: darkgreen;
+}
+.signup-container {
+  height: 470px;
+}
+
+.signup-container #password {
+  border-radius: 6px 0 0 6px;
+}
+
+.signup-container select {
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+}
+
+#passwordVis {
+  background-color: #333;
+  width: 10%;
+  height: 40px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 0 6px 6px 0;
+
+}
+
+#passwordVis:hover {
+  background-color: #ae005d;
+}
+
+#goLogIn {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }

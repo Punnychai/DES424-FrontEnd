@@ -3,36 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Concert Ticketing System</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Sign Up | Concert Ticketing System</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../static/img/ElGato.png">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
-<body>
+<body style="overflow: hidden;">
     <header>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="concerts.html">Concerts</a>
+            <a href="home.html">
+                <img src="../static/img/ElGato.png" alt="Concert Logo">
+            </a>
+            <a href="concert.html">Concerts</a>
             <a href="signup.html">Sign Up</a>
             <a href="login.html">Log In</a>
-            <a href="seat-reservation.html">Seat Reservation</a>
+            <a href="about.html">About Us</a>
             <a href="account.html">My Account</a>
         </nav>
-    </header>
+    </header>  
+    
     <main>
-        <h1>Create Your Account</h1>
-        <form id="signup-form">
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Enter your name" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your email" required>
-
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter your password" required>
-
-            <input type="submit" value="Sign Up">
-        </form>
+        <h1>Sign Up</h1>
+        <div class="signup-container">
+            <form id="signupForm" action="" method="post">
+                <div>
+                    <label for="username"><h6>Username :</h6></label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="email"><h6>Email Address :</h6></label>
+                    <input type="text" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="password"><h6>Password :</h6></label>
+                    <div style="display: flex;">
+                        <input type="password" id="password" name="password" required>
+                        <button type="button" id="passwordVis" onclick="togglePasswordVisibility()">
+                            <h6 style="margin: -1px 0 0 -15px;">S/H</h6>
+                        </button>
+                    </div>
+                </div>
+                
+                <input type="submit" name="SignUp" value="Sign Up">
+                <br />
+                <p style="text-align: center; position: relative; bottom: 20px;">Already a Member?<a id="goLogIn" href="login.html">Log In</a></p>
+            </form>
+        </div>
     </main>
+
     <script>
+        // THIS ONE IS CURRENTLY IN USE
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const passwordFieldType = passwordField.getAttribute('type');
+            passwordField.setAttribute('type', passwordFieldType === 'password' ? 'text' : 'password');
+        }
+
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const feedback = passwordAnalyser(password);
+            document.getElementById('passwordStrength').textContent = feedback[0];
+            document.getElementById('passwordMissing').textContent = feedback[1];
+        });
+        
+        // UNUSED
         document.getElementById("signup-form").addEventListener("submit", async (e) => {
             e.preventDefault();
             const name = document.getElementById("name").value;
