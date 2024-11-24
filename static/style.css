@@ -205,7 +205,6 @@ main button:hover {
 /* LOGIN & SIGNUP */
 .login-container, .signup-container {
   width: 400px;
-  height: 390px;
   margin: 2% auto; /* Center horizontally with auto margin */
   padding: 20px;
   border-radius: 8px;
@@ -231,10 +230,10 @@ main button:hover {
   font-size: 14px;
 }
 
-#username, #email, #password {
+#username, #email, #phone, #password {
   height: 40px;
   padding: 10px;
-  margin : 10px 0;
+  margin-bottom: 5px;
   border: none;
   border-radius: 6px;
   background-color: #333;
@@ -264,7 +263,7 @@ input[type="submit"] {
   color: white;
   font-size: 16px;
   font-weight: 600;
-  margin: 2% 0;
+  margin: 8px 0;
   padding: 12px 20px;
   border: none;
   border-radius: 6px;
@@ -295,7 +294,6 @@ input[type="submit"]:hover {
   background-color: #333;
   width: 10%;
   height: 40px;
-  margin-top: 10px;
   border: none;
   border-radius: 0 6px 6px 0;
 
