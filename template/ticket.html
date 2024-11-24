@@ -6,8 +6,78 @@
     <title>Tickets | Concert Ticketing System</title>
     <link rel="shortcut icon" type="image/x-icon" href="../static/img/ElGato.png">
     <link rel="stylesheet" href="../static/style.css">
+    <style>
+        .map {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: auto auto auto auto;
+            gap: 10px;
+            width: 50%;
+            max-width: 600px;
+        }
+        .zone {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            border-radius: 10px;
+            font-weight: bold;
+            height: 80px;
+            background-color: white;
+        }
+        #stage {
+            grid-column: 1 / span 3;
+            height: 60px;
+            color: black;
+        }
+        #zoneC, #zoneD {
+            grid-row: 2 / span 3;
+            height: 100%;
+        }
+        #zoneA {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        #zoneB {
+            grid-column: 2;
+            grid-row: 3;
+        }
+        .dropdown {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        .dropdown * {
+            margin-left: 10px;
+        }
+        select {
+            padding: 10px 15px;
+            font-size: 16px;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+        .summary {
+            margin: 30px 0 0 80px;
+        }
+        .purchase-btn {
+            margin: 20px 0 0 80px;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .purchase-btn:disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+        .purchase-btn:disabled:hover {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
-<body>
+<body style="overflow: hidden;">
     <header>
         <nav>
             <a href="home.html">
@@ -22,9 +92,111 @@
     </header>    
     
     <main>
-        <h1>My Account</h1>
-        <div>
-
+        <h1>Tickets</h1>
+        <div class="concert-card" style="height: 470px;">
+            <div class="map">
+                <div id="zoneC" class="zone">ZONE C</div>
+                <div id="stage" class="zone">STAGE</div>
+                <div id="zoneD" class="zone">ZONE D</div>
+                <div id="zoneA" class="zone">ZONE A</div>
+                <div id="zoneB" class="zone">ZONE B</div>
+            </div>
+            
+            <div class="concert-info">
+                <div class="dropdown">
+                    <label for="zone-select">Zone:</label>
+                    <select id="zone-select">
+                        <option value="zoneA">Zone A</option>
+                        <option value="zoneB">Zone B</option>
+                        <option value="zoneC">Zone C</option>
+                        <option value="zoneD">Zone D</option>
+                    </select>
+            
+                    <label for="amount-select">Amount:</label>
+                    <select id="amount-select">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            
+                <div class="summary">
+                    <p>Price Per Ticket: <span id="price">0</span> THB</p>
+                    <p>Amount: <span id="amount">0</span></p>
+                    <p>Total: <span id="total">0</span> THB</p>
+                </div>
+            
+                <button id="purchase-btn" class="purchase-btn" disabled>Purchase</button>
+            </div>
         </div>
     </main>
+
+    <script>
+        const zoneData = {      // THIS WILL CHANGE WHEN CONNECTING TO DB
+            zoneA: { price: 200, ticketsLeft: 1 },
+            zoneB: { price: 200, ticketsLeft: 40 },
+            zoneC: { price: 150, ticketsLeft: 60 },
+            zoneD: { price: 150, ticketsLeft: 70 }
+        };
+    
+        const zoneElements = {
+            zoneA: document.getElementById("zoneA"),
+            zoneB: document.getElementById("zoneB"),
+            zoneC: document.getElementById("zoneC"),
+            zoneD: document.getElementById("zoneD")
+        };
+    
+        const zoneSelect = document.getElementById("zone-select");
+        const amountSelect = document.getElementById("amount-select");
+        const priceDisplay = document.getElementById("price");
+        const amountDisplay = document.getElementById("amount");
+        const totalDisplay = document.getElementById("total");
+        const purchaseButton = document.getElementById("purchase-btn");
+    
+        function updateZoneColors() {
+            for (const [zone, data] of Object.entries(zoneData)) {
+                const element = zoneElements[zone];
+                if (data.ticketsLeft > 50) {
+                    element.style.backgroundColor = "green";
+                } else if (data.ticketsLeft > 20) {
+                    element.style.backgroundColor = "orange";
+                } else {
+                    element.style.backgroundColor = "red";
+                }
+            }
+        }
+    
+        function updateSummary() {
+            const selectedZone = zoneSelect.value;
+            const ticketAmount = parseInt(amountSelect.value, 10);
+            const ticketPrice = zoneData[selectedZone].price;
+    
+            priceDisplay.textContent = ticketPrice;
+            amountDisplay.textContent = ticketAmount;
+            totalDisplay.textContent = ticketPrice * ticketAmount;
+    
+            purchaseButton.disabled = ticketAmount > zoneData[selectedZone].ticketsLeft;
+        }
+    
+        function purchaseTickets() {
+            const selectedZone = zoneSelect.value;
+            const ticketAmount = parseInt(amountSelect.value, 10);
+    
+            if (ticketAmount <= zoneData[selectedZone].ticketsLeft) {
+                zoneData[selectedZone].ticketsLeft -= ticketAmount;
+                updateZoneColors();
+                updateSummary();
+                alert("Purchase successful!");
+            } else {
+                alert("Not enough tickets available!");
+            }
+        }
+    
+        zoneSelect.addEventListener("change", updateSummary);
+        amountSelect.addEventListener("change", updateSummary);
+        purchaseButton.addEventListener("click", purchaseTickets);
+    
+        updateZoneColors();
+        updateSummary();
+    </script>
 </body>
