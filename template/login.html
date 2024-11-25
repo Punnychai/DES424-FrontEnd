@@ -24,7 +24,8 @@
     <main>
         <h1>Log In</h1>
         <div class="login-container">
-            <form id="loginForm" action="" method="post">
+            <form id="loginForm" action="" method="post" onsubmit="redirectToAuthen()">
+                <!-- sends data to itself but redirects to authen -->
                 <div>
                     <label for="username"><h6>Username :</h6></label>
                     <input type="text" id="username" name="username">
@@ -37,9 +38,14 @@
             </form>
         </div>
     </main>
-
-    <!-- GPT-generated; unused -->
+    
     <script>
+        function redirectToAuthen() {
+            event.preventDefault();
+            window.location.href = "authen.html"; // redirect to authen.html
+        }
+
+        // GPT-Generated; UNUSED
         document.getElementById("login-form").addEventListener("submit", async (e) => {
             e.preventDefault();
             const email = document.getElementById("email").value;
