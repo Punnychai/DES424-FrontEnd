@@ -384,3 +384,46 @@ select {
   background-color: grey;
   cursor: not-allowed;
 }
+
+/* ACCOUNT */
+.user-details, .user-tickets {
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  margin-bottom: 10px;
+}
+
+.user-details h2, .user-tickets h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.user-details .form-group {
+  margin-bottom: 1rem;
+}
+
+.user-details label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.user-details input, .user-details select {
+  width: 100%;
+  padding: 0.8em;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.user-details input[readonly], .user-details select[disabled] {
+  background-color: #f0f0f0;
+}
+
+.user-tickets {
+  height : 470px;
+  margin-top: -2rem;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
