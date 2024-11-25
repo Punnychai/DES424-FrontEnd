@@ -119,7 +119,7 @@
                 zoneData[selectedZone].ticketsLeft -= ticketAmount;
                 updateZoneColors();
                 updateSummary();
-                alert("Purchase successful!");
+                window.location.href = "payment.html";
             } else {
                 alert("Not enough tickets available!");
             }
