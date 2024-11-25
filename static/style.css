@@ -230,7 +230,7 @@ main button:hover {
   font-size: 14px;
 }
 
-#username, #email, #phone, #password {
+#username, #email, #phone, #password, #eventname, #eventdate, #eventdesc, #eventimage {
   height: 40px;
   padding: 10px;
   margin-bottom: 5px;
